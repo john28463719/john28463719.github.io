@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-11T20:10:26+08:00</updated><id>http://localhost:4000//</id><title type="html">JohnWu Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><entry><title type="html">Jekyll + Github page 架設簡單個人網站(Mac)</title><link href="http://localhost:4000/2017/01/11/jekyll+github-page.html" rel="alternate" type="text/html" title="Jekyll + Github page 架設簡單個人網站(Mac)" /><published>2017-01-11T00:00:00+08:00</published><updated>2017-01-11T00:00:00+08:00</updated><id>http://localhost:4000/2017/01/11/jekyll+github-page</id><content type="html" xml:base="http://localhost:4000/2017/01/11/jekyll+github-page.html">&lt;p&gt;本篇記錄如何使用Github page + Jekyll建置網站，如果對網頁有粗淺認識並且想架設自己的部落格的人希望本篇對你有些幫助&lt;/p&gt;
+
+&lt;h3 id=&quot;jekyll介紹&quot;&gt;Jekyll介紹&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt; 是一個Open Source的靜態網站產生框架，他會根據網頁原碼生成靜態網站。提供了模板，套件等功能。（Jekyll是基于Ruby的程序）&lt;/p&gt;
+
+&lt;p&gt;官方說明&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Jekyll is a simple, blog-aware, static site generator perfect for personal, project, or organization sites. Think of it like a file-based CMS, without all the complexity. Jekyll takes your content, renders Markdown and Liquid templates, and spits out a complete, static website ready to be served by Apache, Nginx or another web server. Jekyll is the engine behind GitHub Pages, which you can use to host sites right from your GitHub repositories.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;github-page介紹&quot;&gt;Github page介紹&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://pages.github.com/&quot;&gt;Github page&lt;/a&gt; 可以把你的網站建置在github上，非常的方便且簡單操作。就是一個簡單的靜態網站託管。&lt;/p&gt;
+
+&lt;h3 id=&quot;開始&quot;&gt;開始&lt;/h3&gt;
+
+&lt;h4 id=&quot;新建new-repository&quot;&gt;新建new repository&lt;/h4&gt;
+&lt;p&gt;申請Github帳號，新建new repository，然後為我們新建的repository命名，命名需要遵循規則：username/username.github.io。
+username這邊是你的帳號名稱&lt;/p&gt;
+&lt;h4 id=&quot;clone-到自己本地端&quot;&gt;clone 到自己本地端&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir MyWebsite
+cd MyWebsite
+git clone https://github.com/username/username.github.io
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;安裝jekyll&quot;&gt;安裝Jekyll&lt;/h4&gt;
+&lt;p&gt;下面是我有使用到的套件，如果有缺其它套件再安裝就好，Mac自帶ruby所以就不用再安裝ruby，更新一下就好，確保為最新版本，因為本人是OSX 10.11所以上網查了一下需要這樣&lt;a href=&quot;http://stackoverflow.com/questions/31567029/how-can-i-install-jekyll-on-osx-10-11&quot;&gt;安裝&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OSX 10.11以上
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem update ruby
+sudo gem install -n /usr/local/bin/ jekyll
+sudo gem install -n /usr/local/bin/ bundler
+sudo gem install -n /usr/local/bin/ rdiscount
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;OSX 10.11以下
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem update ruby
+sudo gem install jekyll
+sudo gem install bundler
+sudo gem install rdiscount
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;使用jekyll&quot;&gt;使用Jekyll&lt;/h4&gt;
+&lt;p&gt;Jekyll有個好處就是有自帶虛擬伺服器，可以在本地端測試，先創建新的專案，在本地端測試執行。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new MyBlog
+cd MyBlog
+jekyll server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;成功的話會顯示在這網址 http://127.0.0.1:4000/&lt;/p&gt;
+
+&lt;h4 id=&quot;jekyll目錄結構&quot;&gt;Jekyll目錄結構&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
+├── _config.yml
+├── _data
+|   └── members.yml
+├── _drafts
+|   ├── begin-with-the-crazy-ideas.md
+|   └── on-simplicity-in-technology.md
+├── _includes
+|   ├── footer.html
+|   └── header.html
+├── _layouts
+|   ├── default.html
+|   └── post.html
+├── _posts
+|   ├── 2007-10-29-why-every-programmer-should-play-nethack.md
+|   └── 2009-04-26-barcamp-boston-4-roundup.md
+├── _sass
+|   ├── _base.scss
+|   └── _layout.scss
+├── _site
+├── .jekyll-metadata
+└── index.html 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;config.yml:配置文件，主要用於設置基本訊息。&lt;/li&gt;
+  &lt;li&gt;_includes:存放可覆用的模組，&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;/code&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;% include foot.html %&lt;/code&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;}&lt;/code&gt;調用。&lt;/li&gt;
+  &lt;li&gt;_layouts:html存放位置。&lt;/li&gt;
+  &lt;li&gt;_posts:文章名稱必須(年-月-日-文章名稱)照著規則命名。&lt;/li&gt;
+  &lt;li&gt;_site:jekyll生成的檔案，可以放在.gitignore文件中忽略他。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;jekyllgithub-page&quot;&gt;Jekyll+Github page&lt;/h3&gt;
+&lt;p&gt;剛剛新建專案跟他目錄結構相比少了很多東西，你可以到&lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;Jekyll Theme&lt;/a&gt;下載你喜歡的主題，或者你可以上github找找其他人的網站clone下來再做修改，我是利用&lt;a href=&quot;https://github.com/Huxpro/huxpro.github.io&quot;&gt;Hux大大&lt;/a&gt;做修改，
+接下來你只要把你下載的或clone下的專案複製貼上到你username.github.io資料夾裡在做push的動作，就完成囉～&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add --all
+git commit -m &quot;Initial commit&quot;
+git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name>John Wu</name></author><category term="Web" /><category term="Jekyll" /><category term="Github" /><summary type="html">本篇記錄如何使用Github page + Jekyll建置網站，如果對網頁有粗淺認識並且想架設自己的部落格的人希望本篇對你有些幫助</summary></entry><entry><title type="html">Welcome to Jekyll!</title><link href="http://localhost:4000/jekyll/update/2017/01/10/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Welcome to Jekyll!" /><published>2017-01-10T17:10:54+08:00</published><updated>2017-01-10T17:10:54+08:00</updated><id>http://localhost:4000/jekyll/update/2017/01/10/welcome-to-jekyll</id><content type="html" xml:base="http://localhost:4000/jekyll/update/2017/01/10/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;</content><category term="Web" /><category term="Jekyll" /><category term="Github" /><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
