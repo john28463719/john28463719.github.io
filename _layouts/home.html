@@ -81,18 +81,7 @@
                 <div class="intro-lead-in">Welcome To See Me!</div>
                 <div class="intro-heading"></div>
                 <a href="/blog" class="page-scroll btn btn-xl">My Blog</a>
-                <!-- <div class="home">  
-  
-  <h1 class="page-heading">第一个博客页面</h1>  
-  
-  <ul class="post-list">  
-      
-  </ul>  
-  <p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>  
-  
-</div></span> 
-
- -->
+                <!-- {{content}} -->
             </div>
         </div>
     </header>
@@ -292,11 +281,11 @@
                 <img src="img/about/me.jpg" class="img-responsive img-circle" alt="">
                 <h4>John Wu</h4>
                 <ul class="list-inline social-buttons">
-                    <li><a href="https://www.facebook.com/john28463719" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <li><a href="https://www.facebook.com/{{ site.facebook_username }}" target="_blank"><i class="fa fa-facebook"></i></a>
                     </li>
-                    <li><a href="https://github.com/john28463719" target="_blank"><i class="fa fa-github"></i></a>
+                    <li><a href="https://github.com/{{ site.github_username }}" target="_blank"><i class="fa fa-github"></i></a>
                     </li>
-                    <li><a href="mailto:j284637192000@gmail.com" target="self"><i class="fa fa-envelope"></i></a>
+                    <li><a href="mailto:{{ site.email }}" target="self"><i class="fa fa-envelope"></i></a>
                     </li>
                 </ul>
             </div>
