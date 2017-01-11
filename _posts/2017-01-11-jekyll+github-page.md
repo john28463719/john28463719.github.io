@@ -1,7 +1,6 @@
 ---
 layout:     post
 title:      "Jekyll + Github page 架設簡單個人網站(Mac)"
-subtitle:   "Practical CoreBluetooth for Peripherals"
 date:       2017-01-11
 author:     "John Wu"
 catalog:    true
