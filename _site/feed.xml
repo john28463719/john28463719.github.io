@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-11T23:00:09+08:00</updated><id>http://localhost:4000//</id><title type="html">JohnWu Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-11T23:09:49+08:00</updated><id>http://localhost:4000//</id><title type="html">JohnWu Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
 </subtitle><entry><title type="html">Jekyll + Github page 架設簡單個人網站(Mac)</title><link href="http://localhost:4000/2017/01/11/jekyll+github-page.html" rel="alternate" type="text/html" title="Jekyll + Github page 架設簡單個人網站(Mac)" /><published>2017-01-11T00:00:00+08:00</published><updated>2017-01-11T00:00:00+08:00</updated><id>http://localhost:4000/2017/01/11/jekyll+github-page</id><content type="html" xml:base="http://localhost:4000/2017/01/11/jekyll+github-page.html">&lt;p&gt;本篇記錄如何使用Github page + Jekyll建置網站，如果對網頁有粗淺認識並且想架設自己的部落格的人希望本篇對你有些幫助&lt;/p&gt;
 
 &lt;h3 id=&quot;jekyll介紹&quot;&gt;Jekyll介紹&lt;/h3&gt;
@@ -20,7 +20,9 @@
 &lt;h4 id=&quot;新建new-repository&quot;&gt;新建new repository&lt;/h4&gt;
 &lt;p&gt;申請Github帳號，新建new repository，然後為我們新建的repository命名，命名需要遵循規則：username/username.github.io。
 username這邊是你的帳號名稱&lt;/p&gt;
+
 &lt;h4 id=&quot;clone-到自己本地端&quot;&gt;clone 到自己本地端&lt;/h4&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;mkdir MyWebsite
 cd MyWebsite
 git clone https://github.com/username/username.github.io
@@ -30,26 +32,30 @@ git clone https://github.com/username/username.github.io
 &lt;p&gt;下面是我有使用到的套件，如果有缺其它套件再安裝就好，Mac自帶ruby所以就不用再安裝ruby，更新一下就好，確保為最新版本，因為本人是OSX 10.11所以上網查了一下需要這樣&lt;a href=&quot;http://stackoverflow.com/questions/31567029/how-can-i-install-jekyll-on-osx-10-11&quot;&gt;安裝&lt;/a&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;OSX 10.11以上
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem update ruby
+  &lt;li&gt;OSX 10.11以上&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem update ruby
 sudo gem install -n /usr/local/bin/ jekyll
 sudo gem install -n /usr/local/bin/ bundler
 sudo gem install -n /usr/local/bin/ rdiscount
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-  &lt;li&gt;OSX 10.11以下
-    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem update ruby
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;OSX 10.11以下&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gem update ruby
 sudo gem install jekyll
 sudo gem install bundler
 sudo gem install rdiscount
 &lt;/code&gt;&lt;/pre&gt;
-    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
+&lt;/div&gt;
 
 &lt;h4 id=&quot;使用jekyll&quot;&gt;使用Jekyll&lt;/h4&gt;
 &lt;p&gt;Jekyll有個好處就是有自帶虛擬伺服器，可以在本地端測試，先創建新的專案，在本地端測試執行。&lt;/p&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new MyBlog
 cd MyBlog
 jekyll server
@@ -58,6 +64,7 @@ jekyll server
 &lt;p&gt;成功的話會顯示在這網址 http://127.0.0.1:4000/&lt;/p&gt;
 
 &lt;h4 id=&quot;jekyll目錄結構&quot;&gt;Jekyll目錄結構&lt;/h4&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
 ├── _config.yml
 ├── _data
@@ -91,8 +98,10 @@ jekyll server
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;jekyllgithub-page&quot;&gt;Jekyll+Github page&lt;/h3&gt;
+
 &lt;p&gt;剛剛新建專案跟他目錄結構相比少了很多東西，你可以到&lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;Jekyll Theme&lt;/a&gt;下載你喜歡的主題，或者你可以上github找找其他人的網站clone下來再做修改，我是利用&lt;a href=&quot;https://github.com/Huxpro/huxpro.github.io&quot;&gt;Hux大大&lt;/a&gt;做修改，
 接下來你只要把你下載的或clone下的專案複製貼上到你username.github.io資料夾裡在做push的動作，就完成囉～&lt;/p&gt;
+
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git add --all
 git commit -m &quot;Initial commit&quot;
 git push -u origin master

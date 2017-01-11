@@ -216,7 +216,9 @@
 <h4 id="新建new-repository">新建new repository</h4>
 <p>申請Github帳號，新建new repository，然後為我們新建的repository命名，命名需要遵循規則：username/username.github.io。
 username這邊是你的帳號名稱</p>
+
 <h4 id="clone-到自己本地端">clone 到自己本地端</h4>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>mkdir MyWebsite
 cd MyWebsite
 git clone https://github.com/username/username.github.io
@@ -226,26 +228,30 @@ git clone https://github.com/username/username.github.io
 <p>下面是我有使用到的套件，如果有缺其它套件再安裝就好，Mac自帶ruby所以就不用再安裝ruby，更新一下就好，確保為最新版本，因為本人是OSX 10.11所以上網查了一下需要這樣<a href="http://stackoverflow.com/questions/31567029/how-can-i-install-jekyll-on-osx-10-11">安裝</a></p>
 
 <ul>
-  <li>OSX 10.11以上
-    <div class="highlighter-rouge"><pre class="highlight"><code>gem update ruby
+  <li>OSX 10.11以上</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gem update ruby
 sudo gem install -n /usr/local/bin/ jekyll
 sudo gem install -n /usr/local/bin/ bundler
 sudo gem install -n /usr/local/bin/ rdiscount
 </code></pre>
-    </div>
-  </li>
-  <li>OSX 10.11以下
-    <div class="highlighter-rouge"><pre class="highlight"><code>gem update ruby
+</div>
+
+<ul>
+  <li>OSX 10.11以下</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>gem update ruby
 sudo gem install jekyll
 sudo gem install bundler
 sudo gem install rdiscount
 </code></pre>
-    </div>
-  </li>
-</ul>
+</div>
 
 <h4 id="使用jekyll">使用Jekyll</h4>
 <p>Jekyll有個好處就是有自帶虛擬伺服器，可以在本地端測試，先創建新的專案，在本地端測試執行。</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>jekyll new MyBlog
 cd MyBlog
 jekyll server
@@ -254,6 +260,7 @@ jekyll server
 <p>成功的話會顯示在這網址 http://127.0.0.1:4000/</p>
 
 <h4 id="jekyll目錄結構">Jekyll目錄結構</h4>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>.
 ├── _config.yml
 ├── _data
@@ -287,8 +294,10 @@ jekyll server
 </ul>
 
 <h3 id="jekyllgithub-page">Jekyll+Github page</h3>
+
 <p>剛剛新建專案跟他目錄結構相比少了很多東西，你可以到<a href="http://jekyllthemes.org/">Jekyll Theme</a>下載你喜歡的主題，或者你可以上github找找其他人的網站clone下來再做修改，我是利用<a href="https://github.com/Huxpro/huxpro.github.io">Hux大大</a>做修改，
 接下來你只要把你下載的或clone下的專案複製貼上到你username.github.io資料夾裡在做push的動作，就完成囉～</p>
+
 <div class="highlighter-rouge"><pre class="highlight"><code>git add --all
 git commit -m "Initial commit"
 git push -u origin master

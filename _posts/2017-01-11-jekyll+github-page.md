@@ -31,7 +31,9 @@ tags:
 #### 新建new repository
 申請Github帳號，新建new repository，然後為我們新建的repository命名，命名需要遵循規則：username/username.github.io。
 username這邊是你的帳號名稱
+
 #### clone 到自己本地端
+
 ```
 mkdir MyWebsite
 cd MyWebsite
@@ -41,6 +43,7 @@ git clone https://github.com/username/username.github.io
 下面是我有使用到的套件，如果有缺其它套件再安裝就好，Mac自帶ruby所以就不用再安裝ruby，更新一下就好，確保為最新版本，因為本人是OSX 10.11所以上網查了一下需要這樣[安裝](http://stackoverflow.com/questions/31567029/how-can-i-install-jekyll-on-osx-10-11)
 
 - OSX 10.11以上
+
 ```
 gem update ruby
 sudo gem install -n /usr/local/bin/ jekyll
@@ -49,6 +52,7 @@ sudo gem install -n /usr/local/bin/ rdiscount
 ```
 
 - OSX 10.11以下
+
 ```
 gem update ruby
 sudo gem install jekyll
@@ -58,6 +62,7 @@ sudo gem install rdiscount
 
 #### 使用Jekyll
 Jekyll有個好處就是有自帶虛擬伺服器，可以在本地端測試，先創建新的專案，在本地端測試執行。
+
 ```
 jekyll new MyBlog
 cd MyBlog
@@ -66,6 +71,7 @@ jekyll server
 成功的話會顯示在這網址 http://127.0.0.1:4000/
 
 #### Jekyll目錄結構
+
 ```
 .
 ├── _config.yml
@@ -97,8 +103,10 @@ jekyll server
 - _site:jekyll生成的檔案，可以放在.gitignore文件中忽略他。
 
 ### Jekyll+Github page
+
 剛剛新建專案跟他目錄結構相比少了很多東西，你可以到[Jekyll Theme](http://jekyllthemes.org/)下載你喜歡的主題，或者你可以上github找找其他人的網站clone下來再做修改，我是利用[Hux大大](https://github.com/Huxpro/huxpro.github.io)做修改，
 接下來你只要把你下載的或clone下的專案複製貼上到你username.github.io資料夾裡在做push的動作，就完成囉～
+
 ```
 git add --all
 git commit -m "Initial commit"
