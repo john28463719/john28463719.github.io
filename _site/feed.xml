@@ -1,5 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-17T16:47:26+08:00</updated><id>http://localhost:4000//</id><title type="html">JohnWu Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><entry><title type="html">Jekyll + Github page 架設簡單個人網站(Mac)</title><link href="http://localhost:4000/2017/01/11/jekyll+github-page.html" rel="alternate" type="text/html" title="Jekyll + Github page 架設簡單個人網站(Mac)" /><published>2017-01-11T00:00:00+08:00</published><updated>2017-01-11T00:00:00+08:00</updated><id>http://localhost:4000/2017/01/11/jekyll+github-page</id><content type="html" xml:base="http://localhost:4000/2017/01/11/jekyll+github-page.html">&lt;p&gt;本篇記錄如何使用Github page + Jekyll建置網站，如果對網頁有粗淺認識並且想架設自己的部落格的人希望本篇對你有些幫助&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-17T17:39:51+08:00</updated><id>http://localhost:4000//</id><title type="html">JohnWu Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><entry><title type="html">Web加上Disqus留言功能</title><link href="http://localhost:4000/2017/01/17/disqus-comment.html" rel="alternate" type="text/html" title="Web加上Disqus留言功能" /><published>2017-01-17T00:00:00+08:00</published><updated>2017-01-17T00:00:00+08:00</updated><id>http://localhost:4000/2017/01/17/disqus-comment</id><content type="html" xml:base="http://localhost:4000/2017/01/17/disqus-comment.html">&lt;p&gt;既前篇簡單架設自己網站後，現在要內遷一個&lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt;留言功能&lt;/p&gt;
+
+&lt;h3 id=&quot;先註冊一個disqus帳號&quot;&gt;先註冊一個Disqus帳號&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://help.disqus.com/customer/portal/articles/472097-universal-embed-code&quot;&gt;Universal Embed Code官方教學&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;選擇disqus內遷平台&quot;&gt;選擇Disqus內遷平台&lt;/h3&gt;
+&lt;p&gt;我先創了一個叫做johnwu的Disqus site
+下圖為選擇內遷的平台，繼上篇我是利用jeklly+github page製作的網站，等於是自寫網站，所以選擇最下面那個&lt;code class=&quot;highlighter-rouge&quot;&gt;I don't see my platfotm...&lt;/code&gt;
+&lt;img src=&quot;/img/post/2017-01-17-disqus-comment/disqus-platform.png&quot; style=&quot;width: 800px;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;因為我創建johnwu的site所以&lt;code class=&quot;highlighter-rouge&quot;&gt;s.src = '//johnwu.disqus.com/embed.js';&lt;/code&gt;這裡要為自己的名稱，完整程式碼如下
+複製貼上到自己的post畫面就好了&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;disqus_thread&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/&lt;/span&gt;
+&lt;span class=&quot;cm&quot;&gt;/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// DON'T EDIT BELOW THIS LINE&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'script'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;src&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'//johnwu.disqus.com/embed.js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setAttribute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'data-timestamp'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appendChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;修改disqus的trusted-domains&quot;&gt;修改Disqus的Trusted Domains&lt;/h3&gt;
+&lt;p&gt;以上客戶端都完成了，剩下的就是Disqus的後端，登入自己的&lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt;並且進入Admin模式&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;點選navigation的setting選單&lt;/li&gt;
+  &lt;li&gt;下滑至Trusted Domains&lt;/li&gt;
+  &lt;li&gt;新增自己網站的domain
+&lt;img src=&quot;/img/post/2017-01-17-disqus-comment/disqus-domain.png&quot; style=&quot;width: 800px;&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;完成&quot;&gt;完成&lt;/h3&gt;
+&lt;p&gt;看看自己網站有沒有留言功能吧，如果創建了很多sites記得要去Disqus(Admin)確定哪個是上線的，才能確保有遷入成功。&lt;/p&gt;</content><author><name>John Wu</name></author><category term="Web" /><category term="Disqus" /><category term="javascript" /><summary type="html">既前篇簡單架設自己網站後，現在要內遷一個Disqus留言功能</summary></entry><entry><title type="html">Jekyll + Github page 架設簡單個人網站(Mac)</title><link href="http://localhost:4000/2017/01/11/jekyll+github-page.html" rel="alternate" type="text/html" title="Jekyll + Github page 架設簡單個人網站(Mac)" /><published>2017-01-11T00:00:00+08:00</published><updated>2017-01-11T00:00:00+08:00</updated><id>http://localhost:4000/2017/01/11/jekyll+github-page</id><content type="html" xml:base="http://localhost:4000/2017/01/11/jekyll+github-page.html">&lt;p&gt;本篇記錄如何使用Github page + Jekyll建置網站，如果對網頁有粗淺認識並且想架設自己的部落格的人希望本篇對你有些幫助&lt;/p&gt;
 
 &lt;h3 id=&quot;jekyll介紹&quot;&gt;Jekyll介紹&lt;/h3&gt;
 
