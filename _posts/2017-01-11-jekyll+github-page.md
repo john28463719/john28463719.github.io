@@ -120,7 +120,7 @@ git push -u origin master
 username一樣是你githhub上的帳號
 
 ### Custom Domain
-我是申請Godaddy的網域，所以這裡透過Godaddy介紹如何設置自己的網域。
+我是申請[Godaddy](https://www.godaddy.com/)的網域，所以這裡透過Godaddy介紹如何設置自己的網域。
 
 #### GoDaddy網域設置
 找到自己喜歡的網域，申請完後，進入自己帳號後,點選Manage 

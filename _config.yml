@@ -34,6 +34,9 @@ facebook_username:  john28463719
 
 anchorjs: true
 
+# Disqus settings
+disqus_username: johnwu
+
 # Markdown settings
 markdown: kramdown
 theme: minima
