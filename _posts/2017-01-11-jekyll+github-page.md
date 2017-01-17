@@ -42,6 +42,7 @@ git clone https://github.com/username/username.github.io
 下面是我有使用到的套件，如果有缺其它套件再安裝就好，Mac自帶ruby所以就不用再安裝ruby，更新一下就好，確保為最新版本，因為本人是OSX 10.11所以上網查了一下需要這樣[安裝](http://stackoverflow.com/questions/31567029/how-can-i-install-jekyll-on-osx-10-11)
 
 - OSX 10.11以上
+
 ```
 gem update ruby
 sudo gem install -n /usr/local/bin/ jekyll
@@ -50,6 +51,7 @@ sudo gem install -n /usr/local/bin/ rdiscount
 ```
 
 - OSX 10.11以下
+
 ```
 gem update ruby
 sudo gem install jekyll
@@ -107,6 +109,7 @@ jekyll server
 
 #### push to Github
 - push 到 github master就完成囉
+
 ```
 git add --all
 git commit -m "Initial commit"
