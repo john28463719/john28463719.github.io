@@ -22,6 +22,7 @@ tags:
 
 因為我創建johnwu的site所以`s.src = '//johnwu.disqus.com/embed.js';`這裡要為自己的名稱，完整程式碼如下
 複製貼上到自己的post畫面就好了
+
 ```javascript
 <div id="disqus_thread"></div>
 <script>
