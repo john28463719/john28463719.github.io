@@ -228,26 +228,23 @@ git clone https://github.com/username/username.github.io
 <p>下面是我有使用到的套件，如果有缺其它套件再安裝就好，Mac自帶ruby所以就不用再安裝ruby，更新一下就好，確保為最新版本，因為本人是OSX 10.11所以上網查了一下需要這樣<a href="http://stackoverflow.com/questions/31567029/how-can-i-install-jekyll-on-osx-10-11">安裝</a></p>
 
 <ul>
-  <li>OSX 10.11以上</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>gem update ruby
+  <li>OSX 10.11以上
+    <div class="highlighter-rouge"><pre class="highlight"><code>gem update ruby
 sudo gem install -n /usr/local/bin/ jekyll
 sudo gem install -n /usr/local/bin/ bundler
 sudo gem install -n /usr/local/bin/ rdiscount
 </code></pre>
-</div>
-
-<ul>
-  <li>OSX 10.11以下</li>
-</ul>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>gem update ruby
+    </div>
+  </li>
+  <li>OSX 10.11以下
+    <div class="highlighter-rouge"><pre class="highlight"><code>gem update ruby
 sudo gem install jekyll
 sudo gem install bundler
 sudo gem install rdiscount
 </code></pre>
-</div>
+    </div>
+  </li>
+</ul>
 
 <h4 id="使用jekyll">使用Jekyll</h4>
 <p>Jekyll有個好處就是有自帶虛擬伺服器，可以在本地端測試，先創建新的專案，在本地端測試執行。</p>
@@ -293,16 +290,46 @@ jekyll server
   <li>_site:jekyll生成的檔案，可以放在.gitignore文件中忽略他。</li>
 </ul>
 
-<h3 id="jekyllgithub-page">Jekyll+Github page</h3>
+<h3 id="完成">完成</h3>
 
-<p>剛剛新建專案跟他目錄結構相比少了很多東西，你可以到<a href="http://jekyllthemes.org/">Jekyll Theme</a>下載你喜歡的主題，或者你可以上github找找其他人的網站clone下來再做修改，我是利用<a href="https://github.com/Huxpro/huxpro.github.io">Hux大大</a>做修改，
-接下來你只要把你下載的或clone下的專案複製貼上到你username.github.io資料夾裡在做push的動作，就完成囉～</p>
+<h4 id="jekyllgithub-page">Jekyll+Github page</h4>
+<p>剛剛新建專案跟他目錄結構相比少了很多東西，你可以到<a href="http://jekyllthemes.org/">Jekyll Theme</a>下載你喜歡的主題，或者你可以上github找找其他人的網站clone下來再做修改，我是利用<a href="https://github.com/Huxpro/huxpro.github.io">Hux大大</a>做修改。<br />
+接著把Jekyll的專案複製貼上到你剛從github clone下來的username.github.io資料夾</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>git add --all
+<h4 id="push-to-github">push to Github</h4>
+<ul>
+  <li>push 到 github master就完成囉
+    <div class="highlighter-rouge"><pre class="highlight"><code>git add --all
 git commit -m "Initial commit"
 git push -u origin master
 </code></pre>
-</div>
+    </div>
+  </li>
+  <li>接著開啟瀏覽器輸入username.github.io網址，就可以看到你自己的專屬網站囉～
+username一樣是你githhub上的帳號</li>
+</ul>
+
+<h3 id="custom-domain">Custom Domain</h3>
+<p>我是申請Godaddy的網域，所以這裡透過Godaddy介紹如何設置自己的網域。</p>
+
+<h4 id="godaddy網域設置">GoDaddy網域設置</h4>
+<p>找到自己喜歡的網域，申請完後，進入自己帳號後,點選Manage 
+<img src="/img/post/2017-01-11-Jekyll+Github-page/godaddy-manage.png" style="width: 800px;" />
+再點選自己的domain name
+<img src="/img/post/2017-01-11-Jekyll+Github-page/godaddy-domain.png" style="width: 800px;" />
+設置Host A，192.30.252.154也可以
+<img src="/img/post/2017-01-11-Jekyll+Github-page/godaddy-detail-A.png" style="width: 800px;" />
+設置CNAME，在www的位置把Points To改成自己github的專案網址
+<img src="/img/post/2017-01-11-Jekyll+Github-page/godaddy-detail-CName.png" style="width: 800px;" /></p>
+
+<h4 id="github上的設置">Github上的設置</h4>
+<p>到自己專案目錄下點選setting
+<img src="/img/post/2017-01-11-Jekyll+Github-page/github-setting.png" style="width: 800px;" />
+在Custom domain那邊輸入你剛申請的網域名稱
+<img src="/img/post/2017-01-11-Jekyll+Github-page/github-github-page.png" style="width: 800px;" /></p>
+
+<h4 id="用自己網域開啟個人網站看看吧">用自己網域開啟個人網站看看吧</h4>
+<p>GoDaddy那邊設置可能沒這麼快可以完成，設定完要記得儲存並且稍等一下，因為他伺服器要處理，如果都設置好就可以使用自己的網域開啟個人網站囉～</p>
 
 
 

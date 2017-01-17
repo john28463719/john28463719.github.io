@@ -42,7 +42,6 @@ git clone https://github.com/username/username.github.io
 下面是我有使用到的套件，如果有缺其它套件再安裝就好，Mac自帶ruby所以就不用再安裝ruby，更新一下就好，確保為最新版本，因為本人是OSX 10.11所以上網查了一下需要這樣[安裝](http://stackoverflow.com/questions/31567029/how-can-i-install-jekyll-on-osx-10-11)
 
 - OSX 10.11以上
-
 ```
 gem update ruby
 sudo gem install -n /usr/local/bin/ jekyll
@@ -51,7 +50,6 @@ sudo gem install -n /usr/local/bin/ rdiscount
 ```
 
 - OSX 10.11以下
-
 ```
 gem update ruby
 sudo gem install jekyll
@@ -101,16 +99,48 @@ jekyll server
 - _posts:文章名稱必須(年-月-日-文章名稱)照著規則命名。
 - _site:jekyll生成的檔案，可以放在.gitignore文件中忽略他。
 
-### Jekyll+Github page
+### 完成
 
-剛剛新建專案跟他目錄結構相比少了很多東西，你可以到[Jekyll Theme](http://jekyllthemes.org/)下載你喜歡的主題，或者你可以上github找找其他人的網站clone下來再做修改，我是利用[Hux大大](https://github.com/Huxpro/huxpro.github.io)做修改，
-接下來你只要把你下載的或clone下的專案複製貼上到你username.github.io資料夾裡在做push的動作，就完成囉～
+#### Jekyll+Github page
+剛剛新建專案跟他目錄結構相比少了很多東西，你可以到[Jekyll Theme](http://jekyllthemes.org/)下載你喜歡的主題，或者你可以上github找找其他人的網站clone下來再做修改，我是利用[Hux大大](https://github.com/Huxpro/huxpro.github.io)做修改。<br>
+接著把Jekyll的專案複製貼上到你剛從github clone下來的username.github.io資料夾
 
+#### push to Github
+- push 到 github master就完成囉
 ```
 git add --all
 git commit -m "Initial commit"
 git push -u origin master
 ```
+
+- 接著開啟瀏覽器輸入username.github.io網址，就可以看到你自己的專屬網站囉～
+username一樣是你githhub上的帳號
+
+### Custom Domain
+我是申請Godaddy的網域，所以這裡透過Godaddy介紹如何設置自己的網域。
+
+#### GoDaddy網域設置
+找到自己喜歡的網域，申請完後，進入自己帳號後,點選Manage 
+<img src="/img/post/2017-01-11-Jekyll+Github-page/godaddy-manage.png" style="width: 800px;"/>
+再點選自己的domain name
+<img src="/img/post/2017-01-11-Jekyll+Github-page/godaddy-domain.png" style="width: 800px;"/>
+設置Host A，192.30.252.154也可以
+<img src="/img/post/2017-01-11-Jekyll+Github-page/godaddy-detail-A.png" style="width: 800px;"/>
+設置CNAME，在www的位置把Points To改成自己github的專案網址
+<img src="/img/post/2017-01-11-Jekyll+Github-page/godaddy-detail-CName.png" style="width: 800px;"/>
+
+#### Github上的設置
+到自己專案目錄下點選setting
+<img src="/img/post/2017-01-11-Jekyll+Github-page/github-setting.png" style="width: 800px;"/>
+在Custom domain那邊輸入你剛申請的網域名稱
+<img src="/img/post/2017-01-11-Jekyll+Github-page/github-github-page.png" style="width: 800px;"/>
+
+#### 用自己網域開啟個人網站看看吧
+GoDaddy那邊設置可能沒這麼快可以完成，設定完要記得儲存並且稍等一下，因為他伺服器要處理，如果都設置好就可以使用自己的網域開啟個人網站囉～
+
+
+
+
 
 
 
