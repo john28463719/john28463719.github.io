@@ -41,6 +41,8 @@ disqus_username: johnwu
 markdown: kramdown
 theme: minima
 
+ga_track_id: 'UA-90586892-1'            # Format: UA-xxxxxx-xx
+ga_domain:   auto
 
 gems: 
   - jekyll-feed
