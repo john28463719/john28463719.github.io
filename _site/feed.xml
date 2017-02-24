@@ -1,5 +1,131 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-01-17T17:54:27+08:00</updated><id>http://localhost:4000//</id><title type="html">JohnWu Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><entry><title type="html">Web加上Disqus留言功能</title><link href="http://localhost:4000/2017/01/17/disqus-comment.html" rel="alternate" type="text/html" title="Web加上Disqus留言功能" /><published>2017-01-17T00:00:00+08:00</published><updated>2017-01-17T00:00:00+08:00</updated><id>http://localhost:4000/2017/01/17/disqus-comment</id><content type="html" xml:base="http://localhost:4000/2017/01/17/disqus-comment.html">&lt;p&gt;既前篇簡單架設自己網站後，現在要內遷一個&lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt;留言功能&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-24T21:54:07+08:00</updated><id>http://localhost:4000//</id><title type="html">JohnWu Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><entry><title type="html">Face Detector 臉部辨識(CIDetector)</title><link href="http://localhost:4000/2017/02/24/face-detector.html" rel="alternate" type="text/html" title="Face Detector 臉部辨識(CIDetector)" /><published>2017-02-24T00:00:00+08:00</published><updated>2017-02-24T00:00:00+08:00</updated><id>http://localhost:4000/2017/02/24/face-detector</id><content type="html" xml:base="http://localhost:4000/2017/02/24/face-detector.html">&lt;p&gt;2月初在研究臉部辨識的framework，很廢的我現在才發現有原生的接下來來介紹如何使用基本的CIDetector。&lt;/p&gt;
+
+&lt;h3 id=&quot;cidetector介紹&quot;&gt;CIDetector介紹&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/reference/coreimage/cidetector&quot;&gt;CIDetector&lt;/a&gt; 先給你看一下他的官方文件，CIDetector前綴字是CI所以很明顯的他是吃Core Image，跟我們平常使用的UIImage有點不同，稍後會介紹。&lt;/p&gt;
+
+&lt;p&gt;官方說明&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A CIDetector object uses image processing to search for and identify notable features (faces, rectangles, and barcodes) in a still image or video. Detected features are represented by CIFeature objects that provide more information about each feature.
+This class can maintain many state variables that can impact performance. So for best performance, reuse CIDetector instances instead of creating new ones.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;介紹uikit與coreimage&quot;&gt;介紹UIKit與CoreImage&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Core Image和UIKit使用的是2種不同的座標系統請見下圖(截自網路）。所以稍後我們必須轉換兩者座標系統。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/post/2017-02-24-face-detector/UIKitCoreImage.png&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;開始&quot;&gt;開始&lt;/h3&gt;
+&lt;p&gt;這篇教學我透過手機攝像頭擷取影像，並且即時抓出你臉部位置，如果只是要偵測圖像的話也可以參考我這邊，省掉攝像頭那部分。
+&lt;br /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;初始化cidetector&quot;&gt;初始化CIDetector&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;private func initialDetector(){
+    let accuracy = [CIDetectorAccuracy : CIDetectorAccuracyHigh as AnyObject]
+    faceDetector = CIDetector(ofType: CIDetectorTypeFace, context: nil, options: accuracy)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;設置session-input&quot;&gt;設置Session Input&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;   private func setupSession(){
+        let desiredPosition = isFrontCam! ? AVCaptureDevicePosition.front : AVCaptureDevicePosition.back
+        let device = self.cameraPosition(position: desiredPosition)
+        var deviceInput: AVCaptureDeviceInput?
+        do{
+            deviceInput = try AVCaptureDeviceInput(device: device)
+        }catch{
+            print(error)
+        }
+        session.sessionPreset = AVCaptureSessionPresetHigh
+        session.addInput(deviceInput)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;設置camera-preview&quot;&gt;設置Camera Preview&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    private func setupCameraPreview(){
+        previewLayer = AVCaptureVideoPreviewLayer(session: session)
+        previewLayer?.frame = captureImage.bounds
+        previewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        captureImage.layer.addSublayer(previewLayer!)
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h4 id=&quot;設置session-output&quot;&gt;設置Session Output&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    private func setupSessionOutput(){
+        self.videoOutput = AVCaptureVideoDataOutput()
+        self.videoOutput!.videoSettings = [kCVPixelBufferPixelFormatTypeKey as AnyHashable: Int(kCVPixelFormatType_32BGRA)]
+        self.videoOutput?.alwaysDiscardsLateVideoFrames = true
+        self.videoOutputQueue = DispatchQueue(label: &quot;videoOutputQueue&quot;)
+        self.videoOutput?.setSampleBufferDelegate(self, queue: self.videoOutputQueue)
+        session.addOutput(videoOutput)
+        session.startRunning()
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;h3 id=&quot;截取output&quot;&gt;截取Output&lt;/h3&gt;
+&lt;p&gt;基本設置完後，要開始擷取攝像頭的Output，調用captureOutput函式要拿到CMSampleBuffer媒體數據轉換成我們需要的圖檔&lt;/p&gt;
+
+&lt;h4 id=&quot;接取session-output&quot;&gt;接取Session Output&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputSampleBuffer sampleBuffer: CMSampleBuffer!, from connection: AVCaptureConnection!) {
+        autoreleasepool {
+            connection.videoOrientation = AVCaptureVideoOrientation.portrait
+            connection.isVideoMirrored = isFrontCam!
+            let imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)
+            let opaqueBuffer = Unmanaged&amp;lt;CVImageBuffer&amp;gt;.passUnretained(imageBuffer!).toOpaque()
+            let pixelBuffer = Unmanaged&amp;lt;CVPixelBuffer&amp;gt;.fromOpaque(opaqueBuffer).takeUnretainedValue()
+            let sourceImage = CIImage(cvImageBuffer: pixelBuffer, options: nil)
+            let options = [CIDetectorSmile : true as AnyObject, CIDetectorEyeBlink: true as AnyObject, CIDetectorImageOrientation : 1 as AnyObject]
+            let faces = faceDetector?.features(in: sourceImage, options: options) as? [CIFaceFeature]
+            if faces?.count != 0 {
+                let viewSize = captureImage.bounds.size
+                let ciImageSize = sourceImage.extent.size
+     			let scaleX = viewSize.width / ciImageSize.width
+                let scaleY = viewSize.height / ciImageSize.height
+                let offsetX = (viewSize.width - ciImageSize.width * scaleX) / 2
+                let offsetY = (viewSize.height - ciImageSize.height * scaleY) / 2
+                for face in faces!{
+                    DispatchQueue.main.sync {
+                        var facebound = face.bounds.applying(coreImage2UIviewTransform(ciImage: sourceImage))
+                        facebound = facebound.applying(CGAffineTransform(scaleX: scaleX, y: scaleY))
+                        facebound.origin.x += offsetX
+                        facebound.origin.y += offsetY
+                        faceBound?.faceLocal = facebound
+                    }
+                }
+            }
+        }
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/reference/coreimage/cidetector/feature_detection_keys&quot;&gt;Feature Detection Option&lt;/a&gt;官網有option的解說&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CIDetectorImageOrientation為1代表portrait&lt;/li&gt;
+  &lt;li&gt;ciImageSize為攝像頭拍攝出的圖像size，所以sessionPreset設為多少這邊size就為多少&lt;/li&gt;
+  &lt;li&gt;接著我們要計算圖片與螢幕的縮放大小，所以是viewSize / ciImageSize （前者為螢幕大小，後者為圖片大小）&lt;/li&gt;
+  &lt;li&gt;得到face的bounds後，實作coreImage轉換至UIKit的座標並且縮放face的bounds&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;再看一次
+&lt;img src=&quot;/img/post/2017-02-24-face-detector/UIKitCoreImage.png&quot; style=&quot;width: 400px;&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;轉換座標的函式&quot;&gt;轉換座標的函式&lt;/h4&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    private func coreImage2UIviewTransform(ciImage: CIImage) -&amp;gt; CGAffineTransform{
+        let ciImagesize = ciImage.extent.size
+        var transform = CGAffineTransform(scaleX: 1, y: -1)
+        transform = transform.translatedBy(x: 0, y: -ciImagesize.height)
+        return transform
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;完成&quot;&gt;完成&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://developer.apple.com/reference/coreimage/cifacefeature&quot;&gt;CIFaceFeature&lt;/a&gt;官方文件
+這邊有相關的資料，可以抓取眼睛耳朵嘴巴諸如此類的，然後試用後感覺有些慢，沒像原生的照相機這麼快，不知道是不是我寫的問題
+，下一篇會介紹GoogleMobileVision的臉部辨識，功能更強大了些。&lt;/p&gt;</content><author><name>John Wu</name></author><category term="iOS" /><category term="Google" /><category term="FaceDetector" /><category term="Camera" /><summary type="html">2月初在研究臉部辨識的framework，很廢的我現在才發現有原生的接下來來介紹如何使用基本的CIDetector。</summary></entry><entry><title type="html">Web加上Disqus留言功能</title><link href="http://localhost:4000/2017/01/17/disqus-comment.html" rel="alternate" type="text/html" title="Web加上Disqus留言功能" /><published>2017-01-17T00:00:00+08:00</published><updated>2017-01-17T00:00:00+08:00</updated><id>http://localhost:4000/2017/01/17/disqus-comment</id><content type="html" xml:base="http://localhost:4000/2017/01/17/disqus-comment.html">&lt;p&gt;既前篇簡單架設自己網站後，現在要內遷一個&lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt;留言功能&lt;/p&gt;
 
 &lt;h3 id=&quot;先註冊一個disqus帳號&quot;&gt;先註冊一個Disqus帳號&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://help.disqus.com/customer/portal/articles/472097-universal-embed-code&quot;&gt;Universal Embed Code官方教學&lt;/a&gt;&lt;/p&gt;
