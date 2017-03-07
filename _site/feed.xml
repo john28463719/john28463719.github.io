@@ -1,5 +1,144 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-02-24T21:54:07+08:00</updated><id>http://localhost:4000//</id><title type="html">JohnWu Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><entry><title type="html">Face Detector 臉部辨識(CIDetector)</title><link href="http://localhost:4000/2017/02/24/face-detector.html" rel="alternate" type="text/html" title="Face Detector 臉部辨識(CIDetector)" /><published>2017-02-24T00:00:00+08:00</published><updated>2017-02-24T00:00:00+08:00</updated><id>http://localhost:4000/2017/02/24/face-detector</id><content type="html" xml:base="http://localhost:4000/2017/02/24/face-detector.html">&lt;p&gt;2月初在研究臉部辨識的framework，很廢的我現在才發現有原生的接下來來介紹如何使用基本的CIDetector。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-03-07T15:37:41+08:00</updated><id>http://localhost:4000//</id><title type="html">JohnWu Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</subtitle><entry><title type="html">從網路上下載ipa檔並且安裝在iPhone or iPad(Download and install an ipa from url on iOS)</title><link href="http://localhost:4000/2017/03/07/install-ipa-from-url.html" rel="alternate" type="text/html" title="從網路上下載ipa檔並且安裝在iPhone or iPad(Download and install an ipa from url on iOS)" /><published>2017-03-07T00:00:00+08:00</published><updated>2017-03-07T00:00:00+08:00</updated><id>http://localhost:4000/2017/03/07/install-ipa-from-url</id><content type="html" xml:base="http://localhost:4000/2017/03/07/install-ipa-from-url.html">&lt;p&gt;原本這篇要介紹GoogleMobileVision，不過這為了自己要記錄，所以請原諒我的自私，然後這關鍵字真的不好下，所以我加上英文希望大家可以搜尋的到中文版教學。&lt;/p&gt;
+
+&lt;h3 id=&quot;stack-overflow發問原網址&quot;&gt;stack overflow發問原網址&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/23561370/download-and-install-an-ipa-from-url-on-ios&quot;&gt;Download and install an ipa from url on iOS&lt;/a&gt; 上面的解法必須要有自己的server並且要申請ssh，因為.plist檔規定只能放在https底下，另外他也有介紹可以放置在dropbox那就方便許多，至於放置dropbox該如何放置他只有粗略介紹，像我這種初心者是看不太懂的，所以以下介紹使用dropbox的方法&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;stack-overflow發問原網址dropbox&quot;&gt;stack overflow發問原網址(Dropbox)&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://stackoverflow.com/questions/26042508/over-the-air-ota-ios-ipa-file-distribution-for-public&quot;&gt;Over The Air (OTA) iOS IPA File Distribution For Public?&lt;/a&gt;這篇有詳細介紹如何把.plist檔放上dropbox&lt;/p&gt;
+
+&lt;h3 id=&quot;開始&quot;&gt;開始&lt;/h3&gt;
+&lt;p&gt;前情提要上面都很清楚地介紹了，需要檔案有三&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;.ipa(ad-Hoc)&lt;/li&gt;
+  &lt;li&gt;.plist&lt;/li&gt;
+  &lt;li&gt;index.html&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;使用&lt;a href=&quot;http://www.hanchorllc.com/2010/08/24/introducing-ios-beta-builder/&quot;&gt;BetaBuilder&lt;/a&gt;創建index.html以及manifest.plist。&lt;a href=&quot;https://s3-ap-southeast-1.amazonaws.com/problem-arc/Beta-Builder/BetaBuilder.zip&quot;&gt;BetaBuilder下載&lt;/a&gt;
+&lt;img src=&quot;/img/post/2017-03-07-install-ipa-from-url/betaBuilder.png&quot; style=&quot;width: 200px; height: 300px;&quot; /&gt;
+輸入的網址是待會你要把產生出的index.html及manifest.plist以及ipa檔上傳的位置例如&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://myWeb.com/MY_TEST_APP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Generate後他會自己產生index.html以及manifest.plist&lt;/p&gt;
+
+&lt;h4 id=&quot;正常版&quot;&gt;正常版&lt;/h4&gt;
+&lt;p&gt;index.html&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;a href=&quot;itms-services://?action=download-manifest&amp;amp;url=https://myWeb.com/MY_TEST_APP/manifest.plist&quot;&amp;gt;Install App&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;manifest.plist&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;plist&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;items&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;array&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;assets&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;array&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;kind&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;software-package&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;url&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;http://YOUR_SERVER_URL/YOUR-IPA-FILE.ipa&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/array&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;metadata&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;bundle-identifier&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;com.yourCompany.productName&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;bundle-version&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;kind&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;software&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;YOUR APP NAME&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/array&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/plist&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;把ipa,.plist,index.html上傳就完成了～&lt;/p&gt;
+
+&lt;h4 id=&quot;dropbox版&quot;&gt;Dropbox版&lt;/h4&gt;
+&lt;p&gt;正常版我們是使用以下網址&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://myWeb.com/MY_TEST_APP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;會使用Dropbox都是因為沒有申請網站的ssh所以只有http，所以我們的網址應該會變這樣&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;http://myWeb.com/MY_TEST_APP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;這邊你的ipa可以放在你自己的網站或是dropbox，都可以&lt;br /&gt;
+如果我的ipa檔是放在&lt;a href=&quot;&quot;&gt;http://myWeb.com/MY_TEST_APP&lt;/a&gt;底下&lt;br /&gt;
+那manifest.plist就會跟正常版長一樣&lt;br /&gt;
+manifest.plist&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE plist PUBLIC &quot;-//Apple//DTD PLIST 1.0//EN&quot; &quot;http://www.apple.com/DTDs/PropertyList-1.0.dtd&quot;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;plist&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;version=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;items&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;array&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;assets&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;array&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;kind&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;software-package&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;url&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                    &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;http://YOUR_SERVER_URL/YOUR-IPA-FILE.ipa&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/array&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;metadata&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;dict&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;bundle-identifier&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;com.yourCompany.productName&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;bundle-version&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;1.0.0&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;kind&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;software&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;key&amp;gt;&lt;/span&gt;title&lt;span class=&quot;nt&quot;&gt;&amp;lt;/key&amp;gt;&lt;/span&gt;
+                &lt;span class=&quot;nt&quot;&gt;&amp;lt;string&amp;gt;&lt;/span&gt;YOUR APP NAME&lt;span class=&quot;nt&quot;&gt;&amp;lt;/string&amp;gt;&lt;/span&gt;
+            &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+        &lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/array&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/dict&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/plist&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;OK，可以把manifest.plist上傳到dropbox了&lt;/p&gt;
+&lt;h5 id=&quot;修改index&quot;&gt;修改index&lt;/h5&gt;
+&lt;p&gt;需要修改的會是index.html&lt;br /&gt;
+上傳manifest.plist檔後，從dropbox分享出manifest.plist的網址，大概長以下這樣&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://www.dropbox.com/s/5lcnp2lhrefawv7/manifest.plist?dl=0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;修改成&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;https://dl.dropbox.com/s/5lcnp2lhrefawv7/manifest.plist
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;所以最後我們的index會變成&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;a href=&quot;itms-services://?action=download-manifest&amp;amp;url=https://dl.dropbox.com/s/5lcnp2lhrefawv7/manifest.plist&quot;&amp;gt;Install App&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;修該完成就把index.html上傳至自己的server吧。
+這部分我只有manifest.plist檔案在dropbox上，剩下的ipa以及index.html都在自己server上。&lt;/p&gt;
+
+&lt;h3 id=&quot;分享你的indexhtml&quot;&gt;分享你的index.html&lt;/h3&gt;
+&lt;p&gt;最後就給別人index.html的網址，但必須要在手機上開啟才能夠下載安裝&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;結語&quot;&gt;結語&lt;/h3&gt;
+&lt;p&gt;如果是個人帳號包出的ad-hoc的話必須要註冊硬體id才能夠安裝，企業帳號的話就隨便安裝。&lt;br /&gt;
+流程是這樣的index.html-&amp;gt;manifest.plist-&amp;gt;.ipa&lt;/p&gt;</content><author><name>John Wu</name></author><category term="iOS" /><category term="ipa" /><summary type="html">原本這篇要介紹GoogleMobileVision，不過這為了自己要記錄，所以請原諒我的自私，然後這關鍵字真的不好下，所以我加上英文希望大家可以搜尋的到中文版教學。</summary></entry><entry><title type="html">Face Detector 臉部辨識(CIDetector)</title><link href="http://localhost:4000/2017/02/24/face-detector.html" rel="alternate" type="text/html" title="Face Detector 臉部辨識(CIDetector)" /><published>2017-02-24T00:00:00+08:00</published><updated>2017-02-24T00:00:00+08:00</updated><id>http://localhost:4000/2017/02/24/face-detector</id><content type="html" xml:base="http://localhost:4000/2017/02/24/face-detector.html">&lt;p&gt;2月初在研究臉部辨識的framework，很廢的我現在才發現有原生的接下來來介紹如何使用基本的CIDetector。&lt;/p&gt;
 
 &lt;h3 id=&quot;cidetector介紹&quot;&gt;CIDetector介紹&lt;/h3&gt;
 
