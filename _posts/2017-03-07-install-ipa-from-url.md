@@ -13,7 +13,7 @@ tags:
 
 ### stack overflow發問原網址
  
-[Download and install an ipa from url on iOS](http://stackoverflow.com/questions/23561370/download-and-install-an-ipa-from-url-on-ios) 上面的解法必須要有自己的server並且要申請ssh，因為.plist檔規定只能放在https底下，另外他也有介紹可以放置在dropbox那就方便許多，至於放置dropbox該如何放置他只有粗略介紹，像我這種初心者是看不太懂的，所以以下介紹使用dropbox的方法<br>
+[Download and install an ipa from url on iOS](http://stackoverflow.com/questions/23561370/download-and-install-an-ipa-from-url-on-ios) 上面的解法必須要有自己的server並且要申請ssl，因為.plist檔規定只能放在https底下，另外他也有介紹可以放置在dropbox那就方便許多，至於放置dropbox該如何放置他只有粗略介紹，像我這種初心者是看不太懂的，所以以下介紹使用dropbox的方法<br>
 
 ### stack overflow發問原網址(Dropbox)
 [Over The Air (OTA) iOS IPA File Distribution For Public?](http://stackoverflow.com/questions/26042508/over-the-air-ota-ios-ipa-file-distribution-for-public)這篇有詳細介紹如何把.plist檔放上dropbox
